@@ -4,6 +4,7 @@ import com.example.demo21.entity.Memo;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -37,4 +38,7 @@ public interface MemoRepository extends JpaRepository<Memo, Long> {
 
     @Query("select Memo from Memo")
     List<Memo> selectAll();
+
+    @Query("select Memo from Memo where mno = :mno")
+    List<Memo> selectOne(@Param("mno") Long mno);
 }
