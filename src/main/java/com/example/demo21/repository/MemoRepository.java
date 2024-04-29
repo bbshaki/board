@@ -3,6 +3,7 @@ package com.example.demo21.repository;
 import com.example.demo21.entity.Memo;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
@@ -33,4 +34,7 @@ public interface MemoRepository extends JpaRepository<Memo, Long> {
     List<Memo> findByMnoBetween(Long a, Long b, Pageable pageable);
 
     List<Memo> findByMemoTextContainsAndMnoBetween(String a, int b, int c);
+
+    @Query("select Memo from Memo")
+    List<Memo> selectAll();
 }
